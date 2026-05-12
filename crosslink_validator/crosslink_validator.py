@@ -20,8 +20,8 @@ def validate_crosslinks(pdb_file, crosslinks, chain_id="A"):
 			coords[residue.get_id()[1]] =residue["CA"].get_vector().get_array()
 
 	for _, row in crosslinks.iterrows():
-		res1 = row["residue1"]
-		res2 = row["residue2"]
+		res1 = int(row["residue1"])
+		res2 = int(row["residue2"])
 		max_dist = row["max_distance"]
 
 		distance = np.sqrt(np.sum((coords[res1] - coords[res2])**2))
